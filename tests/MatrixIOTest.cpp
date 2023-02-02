@@ -15,7 +15,15 @@ BOOST_AUTO_TEST_CASE(OpenData)
       0.566198, -0.604897, -0.444451;
 
   const Eigen::MatrixXd actualMatrix{matrixIO::openData(fileName, expectedMatrixSize)};
-  BOOST_TEST(expectedMatrix == actualMatrix);
+  BOOST_TEST(expectedMatrix(0, 0) == actualMatrix(0, 0));
+  BOOST_TEST(expectedMatrix(0, 1) == actualMatrix(0, 1));
+  BOOST_TEST(expectedMatrix(0, 2) == actualMatrix(0, 2));
+  BOOST_TEST(expectedMatrix(1, 0) == actualMatrix(1, 0));
+  BOOST_TEST(expectedMatrix(1, 1) == actualMatrix(1, 1));
+  BOOST_TEST(expectedMatrix(1, 2) == actualMatrix(1, 2));
+  BOOST_TEST(expectedMatrix(2, 0) == actualMatrix(2, 0));
+  BOOST_TEST(expectedMatrix(2, 1) == actualMatrix(2, 1));
+  BOOST_TEST(expectedMatrix(2, 2) == actualMatrix(2, 2));
 }
 
 BOOST_AUTO_TEST_SUITE_END()
