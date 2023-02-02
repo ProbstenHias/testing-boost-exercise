@@ -22,21 +22,8 @@ jobs:
     steps:
     - name: Install dependencies    
       run: |
-        sudo apt-get update && sudo apt-get install -y \
-        libboost-all-dev \
-        build-essential \
-        cmake \
-        git \
-        libeigen3-dev && \
-        git clone https://github.com/jbeder/yaml-cpp ./src/yaml-cpp && \
-        mkdir ./src/yaml-cpp/build && \
-        cd ./src/yaml-cpp/build && \
-        cmake .. && \
-        make && \
-        make install && \
-        cd .. && \
-        rm -rf build
-
+        sudo apt update
+        sudo apt install cmake gcc libeigen3-dev libyaml-cpp-dev libboost-all-dev
     - name: Checkout code
       uses: actions/checkout@v3
         
