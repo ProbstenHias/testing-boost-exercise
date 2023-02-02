@@ -28,7 +28,7 @@ jobs:
         cmake \
         git \
         libeigen3-dev && \
-        git clone https://github.com/jbeder/yaml-cpp /src/yaml-cpp && \
+        sudo git clone https://github.com/jbeder/yaml-cpp /src/yaml-cpp && \
         mkdir /src/yaml-cpp/build && \
         cd /src/yaml-cpp/build && \
         cmake .. && \
