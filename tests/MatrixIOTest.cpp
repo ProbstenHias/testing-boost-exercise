@@ -5,7 +5,7 @@ using namespace Eigen;
 
 BOOST_AUTO_TEST_SUITE(MatrixIOTests)
 
-BOOST_AUTO_TEST_CASE(ReadMatrix)
+BOOST_AUTO_TEST_CASE(OpenData)
 {
   const std::string fileName{"../data/m3.csv"};
   const int         expectedMatrixSize{3};
