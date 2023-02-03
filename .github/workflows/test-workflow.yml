@@ -20,21 +20,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
     - name: Install dependencies    
       run: |
         sudo apt update
         sudo apt install cmake gcc libeigen3-dev libyaml-cpp-dev libboost-all-dev
-    - name: Checkout code
-      uses: actions/checkout@v3
-        
     - name: Create build directory
       run: mkdir build
     - name: Configure build
       run: cd build && cmake ..
     - name: Build
       run: cd build && make
-    - name: Save build artifacts
+    - name: "compress build"
+      run: tar -cvf build.tar build
+    - name: "upload build directory as artifact"
       uses: actions/upload-artifact@v3
       with:
-        name: build-artifacts
-        path: build/
+        name: build
+        path: build.tar
+        retention-days: 1
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Install dependencies    
+      run: |
+        sudo apt update
+        sudo apt install cmake gcc libeigen3-dev libyaml-cpp-dev libboost-all-dev
+    - name: Download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: build
+    - name: "extract build directory"
+      run: tar -xvf build.tar
+    - name: "run tests"
+      run: cd build && make test
