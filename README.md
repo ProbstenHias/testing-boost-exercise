@@ -1,4 +1,5 @@
 # SIDEMADE - Simple Dense Matrix Decomposition
+![SSE CI/CD](https://github.com/ProbstenHias/testing-boost-exercise/actions/workflows/test-workflow.yml/badge.svg)
 
 A simple demo code to read dense matrices from files and solve linear systems with them.
 
